@@ -1,47 +1,45 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Table, Spin, Alert } from "antd";
 import { getEvent, resetEvent } from "../../redux/features/event/eventSlice";
 
-const Home = () => {
+const EventComponent = () => {
   const dispatch = useDispatch();
-  const eventState = useSelector((state) => state.event);
+  const { event, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.event
+  );
 
   useEffect(() => {
-    // Dispatch action untuk mengambil data dari server
+    // Dispatch async thunk to get event data
     dispatch(
       getEvent({
-        /* your parameters if needed */
+        /* your params here */
       })
     );
 
-    // Bersihkan state setelah komponen dilepas
+    // Clean up event state when component unmounts
+    return () => {
+      dispatch(resetEvent());
+    };
   }, [dispatch]);
 
-  const columns = [
-    {
-      title: "Event Name",
-      dataIndex: "name",
-      key: "name",
-    },
-    // Tambahkan kolom lain jika perlu
-  ];
-
-  if (eventState.isLoading) {
-    return <Spin size="large" />;
+  if (isLoading) {
+    return <div>Loading...</div>;
   }
 
-  if (eventState.isError) {
-    return <Alert message={`Error: ${eventState.message}`} type="error" />;
+  if (isError) {
+    return <div>Error: {message}</div>;
   }
 
-  return (
-    <Table
-      dataSource={eventState.isSuccess ? [eventState.event] : []}
-      columns={columns}
-      rowKey="id" // Pastikan menggunakan kunci unik dari data Anda
-    />
-  );
+  if (isSuccess) {
+    return (
+      <div>
+        <h1>Event Details</h1>
+        <pre>{JSON.stringify(event, null, 2)}</pre>
+      </div>
+    );
+  }
+
+  return null;
 };
 
-export default Home;
+export default EventComponent;

@@ -1,6 +1,6 @@
+// eventSlice.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import eventService from "./eventService";
-// import { notification } from "antd";
 
 const initialState = {
   event: null,
@@ -10,38 +10,15 @@ const initialState = {
   message: "",
 };
 
-// Login user
 export const getEvent = createAsyncThunk(
   "event/getEvent",
   async (params, thunkAPI) => {
     try {
       const getEvent = await eventService.getEvent(params);
-
       return getEvent.response;
     } catch (error) {
-      console.log(error);
+      console.error(error);
       let errorMessage = "An error occurred during get data";
-
-      // if (error.response && error.response.data && error.response.data.message) {
-      //   const { email, password } = error.response.data.message;
-
-      //   if (email && email.length > 0 && password && password.length > 0) {
-      //     errorMessage = `${email[0]} ${password[0]}`;
-      //   } else if (email && email.length > 0) {
-      //     errorMessage = email[0];
-      //   } else if (password && password.length > 0) {
-      //     errorMessage = password[0];
-      //   } else {
-      //     errorMessage = error.response.data.message;
-      //   }
-      // }
-
-      // notification.error({
-      //   message: "Error",
-      //   description: errorMessage,
-      //   placement: "topRight",
-      // });
-
       return thunkAPI.rejectWithValue(errorMessage);
     }
   }
@@ -68,12 +45,13 @@ export const eventSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.message = action.payload.message;
-        state.event = action.payload;
+        state.event = action.payload.data;
       })
-      .addCase(getEvent.rejected, (state) => {
+      .addCase(getEvent.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
-        // state.message = action.payload.message;
+        state.message =
+          action.error.message || "An error occurred during get data";
         state.event = null;
       });
   },
