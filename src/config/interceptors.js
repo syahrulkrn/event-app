@@ -1,12 +1,13 @@
-// import { useHistory } from "react-router-dom";
+import { getUserToken } from "../utils/authToken";
+import { createBrowserHistory } from "history";
+
+const history = createBrowserHistory();
 const setupInterceptors = (axiosInstance) => {
   axiosInstance.interceptors.request.use(
-    (config) => {
-      const authToken = JSON.parse(localStorage.getItem("auth"))?.user
-        ?.authorization?.token;
-
-      if (authToken) {
-        config.headers.Authorization = `Bearer ${authToken}`;
+    async (config) => {
+      const authorizationData = await getUserToken();
+      if (authorizationData) {
+        config.headers.Authorization = `Bearer ${authorizationData}`;
       }
 
       return config;
@@ -24,10 +25,9 @@ const setupInterceptors = (axiosInstance) => {
     },
     (error) => {
       console.log("error", error);
-
       // Handle error responses globally
       if (error.response.status === 401) {
-        // history.push("/auth");
+        history.push("/auth");
         console.error("Unauthorized. Redirect to login page.");
       }
 

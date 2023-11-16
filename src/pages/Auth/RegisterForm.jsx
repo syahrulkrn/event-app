@@ -42,11 +42,9 @@ const RegisterForm = () => {
         <Input.Password />
       </Form.Item>
 
-      <Form.Item>
-        <Button type="primary" htmlType="submit">
-          Register
-        </Button>
-      </Form.Item>
+      <Button type="primary" htmlType="submit">
+        Register
+      </Button>
     </Form>
   );
 };

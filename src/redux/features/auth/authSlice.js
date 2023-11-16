@@ -2,9 +2,6 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import authService from "./authService";
 import { notification } from "antd";
 
-// Get user from localStorage
-// const user = JSON.parse(localStorage.getItem("user"));
-
 const initialState = {
   user: null,
   isError: false,
@@ -19,7 +16,6 @@ export const register = createAsyncThunk(
   async (user, thunkAPI) => {
     try {
       const response = await authService.register(user);
-      // console.log("redux", response);
       return response;
     } catch (error) {
       const message = error?.response?.data;
