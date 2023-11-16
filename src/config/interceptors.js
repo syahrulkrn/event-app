@@ -17,12 +17,13 @@ const setupInterceptors = (axiosInstance) => {
 
   axiosInstance.interceptors.response.use(
     (response) => response,
-    (error) => {
+    async (error) => {
       console.error("Response error:", error);
       if (error?.response?.status === 401) {
         history.push("/auth");
         console.error("Unauthorized. Redirect to login page.");
       }
+
       return Promise.reject(error);
     }
   );

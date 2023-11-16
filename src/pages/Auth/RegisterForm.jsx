@@ -1,8 +1,12 @@
-import { Form, Input, Button, message } from "antd";
+import { Form, Input, Button } from "antd";
+import useRegister from "./hooks/useRegister";
 
-const RegisterForm = () => {
-  const onFinish = () => {
-    message.success("Registration successful");
+// eslint-disable-next-line react/prop-types
+const RegisterForm = ({ onSuccess }) => {
+  const { handleRegister } = useRegister();
+
+  const onFinish = (values) => {
+    handleRegister(values, onSuccess);
   };
 
   return (
@@ -11,6 +15,14 @@ const RegisterForm = () => {
         name="username"
         label="Username"
         rules={[{ required: true, message: "Please input your username!" }]}
+      >
+        <Input />
+      </Form.Item>
+
+      <Form.Item
+        name="email"
+        label="Email"
+        rules={[{ required: true, message: "Please input your email!" }]}
       >
         <Input />
       </Form.Item>
