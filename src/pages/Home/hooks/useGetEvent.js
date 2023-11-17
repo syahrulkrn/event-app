@@ -1,31 +1,26 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getEvent } from "../../../redux/features/event/eventSlice";
+import { getEvent, resetEvent } from "../../../redux/features/event/eventSlice";
 
-const useGetEvent = () => {
+const useEvent = () => {
   const dispatch = useDispatch();
-
-  // const { event } = useSelector((state) => state.event);
+  const { event, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.event
+  );
 
   useEffect(() => {
-    handleGetEvent();
-  }, []);
+    dispatch(
+      getEvent({
+        /* your params here */
+      })
+    );
 
-  const handleGetEvent = () => {
-    try {
-      const params = {
-        page: 1,
-        limit: 10,
-        sortBy: 0,
-      };
+    return () => {
+      dispatch(resetEvent());
+    };
+  }, [dispatch]);
 
-      dispatch(getEvent(params));
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
-
-  return { handleGetEvent };
+  return { event, isLoading, isError, isSuccess, message };
 };
 
-export default useGetEvent;
+export default useEvent;
