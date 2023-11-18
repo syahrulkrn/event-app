@@ -1,78 +1,43 @@
 import { Row, Col, Card } from "antd";
-import moment from "moment";
+import useGetEvent from "./hooks/useGetDetail";
+import { useParams } from "react-router-dom";
 
-const DetailEvent = ({ event }) => {
-  const {
-    title,
-    event_img,
-    place,
-    event_date,
-    start_scan,
-    tolerance_time,
-    qrcode,
-    description,
-    quota,
-    user_id,
-    status,
-    created_at,
-    isJoin,
-    participantCount,
-    get_user,
-  } = event;
+// ... (imports)
+
+const EventDetail = () => {
+  const { id } = useParams();
+  const { eventDetail, isError, isLoading, message } = useGetEvent(id);
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (isError) {
+    return <p>Error: {message}</p>;
+  }
 
   return (
     <div>
-      <h1>{title}</h1>
+      <h1>{eventDetail?.event?.title}</h1>
 
       <Row gutter={16}>
         <Col span={12}>
           <Card
             title="Event Details"
             style={{ marginBottom: 16 }}
-            cover={<img alt="event" src={event_img} />}
+            cover={<img alt="event" src={eventDetail?.event?.event_img} />}
           >
-            <p>
-              <strong>Place:</strong> {place}
-            </p>
-            <p>
-              <strong>Event Date:</strong>{" "}
-              {moment(event_date).format("YYYY-MM-DD HH:mm:ss")}
-            </p>
-            <p>
-              <strong>Start Scan:</strong> {start_scan}
-            </p>
-            <p>
-              <strong>Tolerance Time:</strong> {tolerance_time}
-            </p>
-            <p>
-              <strong>QR Code:</strong> {qrcode}
-            </p>
-            <p>
-              <strong>Description:</strong> {description}
-            </p>
+            {/* ... (other details) */}
           </Card>
         </Col>
         <Col span={12}>
           <Card title="Event Information">
             <p>
-              <strong>Quota:</strong> {quota}
+              <strong>Place:</strong> {eventDetail?.event?.place}
             </p>
             <p>
-              <strong>User ID:</strong> {user_id}
-            </p>
-            <p>
-              <strong>Status:</strong> {status === "1" ? "Active" : "Inactive"}
-            </p>
-            <p>
-              <strong>Created At:</strong>{" "}
-              {moment(created_at).format("YYYY-MM-DD HH:mm:ss")}
-            </p>
-            <p>
-              <strong>Join Status:</strong>{" "}
-              {isJoin === "1" ? "Join" : "Not Join"}
-            </p>
-            <p>
-              <strong>Participant Count:</strong> {participantCount}
+              <strong>Participant Count:</strong>{" "}
+              {eventDetail?.event?.participantCount}
             </p>
           </Card>
         </Col>
@@ -81,12 +46,7 @@ const DetailEvent = ({ event }) => {
       <Row gutter={16} style={{ marginTop: 16 }}>
         <Col span={12}>
           <Card title="Organizer Information">
-            <p>
-              <strong>ID:</strong> {get_user.id}
-            </p>
-            <p>
-              <strong>Name:</strong> {get_user.name}
-            </p>
+            {/* ... (organizer information) */}
           </Card>
         </Col>
       </Row>
@@ -94,4 +54,4 @@ const DetailEvent = ({ event }) => {
   );
 };
 
-export default DetailEvent;
+export default EventDetail;

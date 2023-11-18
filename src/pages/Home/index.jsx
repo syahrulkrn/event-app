@@ -1,5 +1,5 @@
 // File Home.jsx
-import { Table, Alert, Tag, Input, Row, Col } from "antd";
+import { Table, Tag, Input, Row, Col } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import useGetEvent from "./hooks/useGetEvent";
 import { Link } from "react-router-dom";
@@ -9,8 +9,6 @@ const EventTable = () => {
   const {
     event,
     isLoading,
-    isError,
-    message,
     handleTableChange,
     searchText,
     setSearchText,
@@ -62,10 +60,6 @@ const EventTable = () => {
         ),
     },
   ];
-
-  if (isError) {
-    return <Alert message={`Error: ${message}`} type="error" />;
-  }
 
   return (
     <div>

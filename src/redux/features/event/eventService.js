@@ -6,8 +6,8 @@ const getEvent = async (data) => {
   return response.data;
 };
 
-const getEventDetail = async (eventId) => {
-  const response = await axiosInstance.get("/event/list", eventId);
+const getEventDetail = async ({ eventId }) => {
+  const response = await axiosInstance.get(`/event/${eventId}`);
   return response.data;
 };
 

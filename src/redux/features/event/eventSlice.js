@@ -3,6 +3,8 @@ import eventService from "./eventService";
 
 const initialState = {
   event: null,
+  eventDetail: null,
+
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -25,9 +27,9 @@ export const getEvent = createAsyncThunk(
 
 export const getEventDetail = createAsyncThunk(
   "event/getEventDetail",
-  async (params, thunkAPI) => {
+  async (id, thunkAPI) => {
     try {
-      const getEvent = await eventService.getEvent({ params });
+      const getEvent = await eventService.getEventDetail(id);
       return getEvent.response;
     } catch (error) {
       console.error(error);
@@ -57,6 +59,7 @@ export const eventSlice = createSlice({
       })
       .addCase(getEvent.fulfilled, (state, action) => {
         state.isLoading = false;
+        state.isError = false;
         state.isSuccess = true;
         state.message = action.payload.message;
         state.event = action.payload;
@@ -75,16 +78,17 @@ export const eventSlice = createSlice({
       })
       .addCase(getEventDetail.fulfilled, (state, action) => {
         state.isLoading = false;
+        state.isError = false;
         state.isSuccess = true;
         state.message = action.payload.message;
-        state.event = action.payload;
+        state.eventDetail = action.payload;
       })
       .addCase(getEventDetail.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message =
           action.error.message || "An error occurred during get data";
-        state.event = null;
+        state.eventDetail = null;
       });
   },
 });
