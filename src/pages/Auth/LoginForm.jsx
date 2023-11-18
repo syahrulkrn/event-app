@@ -1,11 +1,19 @@
 import { Form, Input, Button } from "antd";
 import useLogin from "./hooks/useLogin";
+import { useSelector } from "react-redux";
 
 const LoginForm = () => {
   const { handleLogin } = useLogin();
+  const { isLoading } = useSelector((state) => state.auth);
 
   return (
-    <Form name="login" onFinish={handleLogin}>
+    <Form
+      name="login"
+      onFinish={handleLogin}
+      labelCol={{ span: 12 }}
+      wrapperCol={{ span: 24 }}
+      layout="vertical"
+    >
       <Form.Item
         name="email"
         label="Email"
@@ -23,7 +31,7 @@ const LoginForm = () => {
       </Form.Item>
 
       <Form.Item>
-        <Button type="primary" htmlType="submit">
+        <Button type="primary" htmlType="submit" loading={isLoading}>
           Login
         </Button>
       </Form.Item>

@@ -14,7 +14,7 @@ export const getEvent = createAsyncThunk(
   "event/getEvent",
   async (params, thunkAPI) => {
     try {
-      const getEvent = await eventService.getEvent(params);
+      const getEvent = await eventService.getEvent({ params });
       return getEvent.response;
     } catch (error) {
       console.error(error);
@@ -45,7 +45,7 @@ export const eventSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.message = action.payload.message;
-        state.event = action.payload.data;
+        state.event = action.payload;
       })
       .addCase(getEvent.rejected, (state, action) => {
         state.isLoading = false;

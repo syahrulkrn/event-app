@@ -1,12 +1,14 @@
 import { Form, Input, Button } from "antd";
 import useRegister from "./hooks/useRegister";
+import { useSelector } from "react-redux";
 
 const RegisterForm = () => {
   const { handleRegister } = useRegister();
-  const [form] = Form.useForm(); // Gunakan Form.useForm() untuk mendapatkan instance form
+  const [form] = Form.useForm();
+  const { isLoading } = useSelector((state) => state.auth);
 
   const resetForm = () => {
-    form.resetFields(); // Reset semua nilai pada form
+    form.resetFields();
   };
 
   const onFinish = (values) => {
@@ -14,34 +16,41 @@ const RegisterForm = () => {
   };
 
   return (
-    <Form form={form} name="register" onFinish={onFinish}>
+    <Form
+      form={form}
+      name="register"
+      onFinish={onFinish}
+      labelCol={{ span: 12 }}
+      wrapperCol={{ span: 24 }}
+      layout="vertical"
+    >
       <Form.Item
-        name="username"
         label="Username"
+        name="username"
         rules={[{ required: true, message: "Please input your username!" }]}
       >
         <Input />
       </Form.Item>
 
       <Form.Item
-        name="email"
         label="Email"
+        name="email"
         rules={[{ required: true, message: "Please input your email!" }]}
       >
         <Input />
       </Form.Item>
 
       <Form.Item
-        name="password"
         label="Password"
+        name="password"
         rules={[{ required: true, message: "Please input your password!" }]}
       >
         <Input.Password />
       </Form.Item>
 
       <Form.Item
-        name="confirmPassword"
         label="Confirm Password"
+        name="confirmPassword"
         dependencies={["password"]}
         rules={[
           { required: true, message: "Please confirm your password!" },
@@ -58,7 +67,7 @@ const RegisterForm = () => {
         <Input.Password />
       </Form.Item>
 
-      <Button type="primary" htmlType="submit">
+      <Button type="primary" htmlType="submit" loading={isLoading}>
         Register
       </Button>
     </Form>
