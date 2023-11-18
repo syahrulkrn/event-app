@@ -20,7 +20,6 @@ const EventDetail = () => {
   const qrCodeValue = eventDetail?.event?.qrcode ?? "";
 
   if (typeof qrCodeValue !== "string" || qrCodeValue.length === 0) {
-    // Handle the case when qrCodeValue is not a valid string
     return <p>Invalid QR Code value</p>;
   }
 

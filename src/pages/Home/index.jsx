@@ -18,7 +18,7 @@ const EventTable = () => {
   const columns = [
     {
       title: "Actions",
-      dataIndex: "id", // Assuming 'id' is the unique identifier of your event
+      dataIndex: "id",
       key: "actions",
       render: (eventId) => (
         <Link to={`/event-detail/${eventId}`}>View Details</Link>
