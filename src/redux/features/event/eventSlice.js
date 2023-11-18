@@ -39,6 +39,34 @@ export const getEventDetail = createAsyncThunk(
   }
 );
 
+export const getHistoryDetail = createAsyncThunk(
+  "event/getHistoryDetail",
+  async (id, thunkAPI) => {
+    try {
+      const getEvent = await eventService.getHistoryDetail(id);
+      return getEvent.response;
+    } catch (error) {
+      console.error(error);
+      let errorMessage = "An error occurred during get data";
+      return thunkAPI.rejectWithValue(errorMessage);
+    }
+  }
+);
+
+export const getHistories = createAsyncThunk(
+  "event/getHistories",
+  async (params, thunkAPI) => {
+    try {
+      const getEvent = await eventService.getHistories({ params });
+      return getEvent.response;
+    } catch (error) {
+      console.error(error);
+      let errorMessage = "An error occurred during get data";
+      return thunkAPI.rejectWithValue(errorMessage);
+    }
+  }
+);
+
 export const eventSlice = createSlice({
   name: "event",
   initialState,
@@ -72,6 +100,27 @@ export const eventSlice = createSlice({
         state.event = null;
       })
 
+      //histories
+      .addCase(getHistories.pending, (state) => {
+        state.isLoading = true;
+      })
+
+      .addCase(getHistories.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.isSuccess = true;
+        state.message = action.payload.message;
+        state.event = action.payload;
+      })
+
+      .addCase(getHistories.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message =
+          action.error.message || "An error occurred during get data";
+        state.event = null;
+      })
+
       // event detail
       .addCase(getEventDetail.pending, (state) => {
         state.isLoading = true;
@@ -84,6 +133,25 @@ export const eventSlice = createSlice({
         state.eventDetail = action.payload;
       })
       .addCase(getEventDetail.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message =
+          action.error.message || "An error occurred during get data";
+        state.eventDetail = null;
+      })
+
+      // history detail
+      .addCase(getHistoryDetail.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getHistoryDetail.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = false;
+        state.isSuccess = true;
+        state.message = action.payload.message;
+        state.eventDetail = action.payload;
+      })
+      .addCase(getHistoryDetail.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message =

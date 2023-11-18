@@ -10,9 +10,21 @@ const getEventDetail = async ({ eventId }) => {
   return response.data;
 };
 
+const getHistories = async (data) => {
+  const response = await axiosInstance.get(`/histories`, data);
+  return response.data;
+};
+
+const getHistoryDetail = async ({ eventId }) => {
+  const response = await axiosInstance.get(`/histories/${eventId}`);
+  return response.data;
+};
+
 const eventService = {
   getEvent,
   getEventDetail,
+  getHistories,
+  getHistoryDetail,
 };
 
 export default eventService;

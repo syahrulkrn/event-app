@@ -15,6 +15,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/history" element={<History />} />
         <Route path="/event-detail/:id" element={<DetailEvent />} />
+        <Route path="/history-detail/:id" element={<DetailEvent />} />
       </Route>
       <Route path="/auth" element={<Auth />} />
     </Routes>
