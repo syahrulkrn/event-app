@@ -1,5 +1,10 @@
 # Event App
 
+
+# Tech Stacks
+![EVENT APP](public/assets/images/react.svg)
+
+
 # Login Form 
 ![EVENT APP](public/assets/images/login.png)
 
