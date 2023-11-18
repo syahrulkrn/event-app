@@ -8,6 +8,8 @@ The Login Interface is a user interface specifically designed to facilitate the 
 
 A description of the Login Interface typically includes several key elements:
 
+<<<<<<< HEAD
+
 - **Username:** An input box for entering the username or email address of the user.
 - **Password:** An input box for entering the user's secret and encrypted password.
 - **Login Button:** A button used to submit login information to the system.
@@ -36,7 +38,14 @@ The table consists of columns that present essential details about each event, s
 
 ## Event Details Action
 
-Within the "Action" column, users can find a "View Details" button or link associated with each event entry. Clicking on this action initiates a seamless process, allowing users to delve deeper into specific event information. This detailed view may include event descriptions, schedules, participant lists, and any other relevant details that provide a comprehensive overview of the selected event.
+# Within the "Action" column, users can find a "View Details" button or link associated with each event entry. Clicking on this action initiates a seamless process, allowing users to delve deeper into specific event information. This detailed view may include event descriptions, schedules, participant lists, and any other relevant details that provide a comprehensive overview of the selected event.
+
+**Login Form:**
+
+- **Username:** An input box for entering the username or email address of the user.
+- **Password:** An input box for entering the user's secret and encrypted password.
+- **Login Button:** A button used to submit login information to the system.
+  > > > > > > > 983f57ee6255c4da22781b57ba14eacc2c722387
 
 # React + Vite
 
