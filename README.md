@@ -1,9 +1,8 @@
 # Event App
-
+The Event App is a versatile application designed to allow users to view, register for events, and more. The app provides a user-friendly platform with functionalities that cater to various aspects of event engagement. Users can seamlessly explore, register for, and participate in events through a streamlined and intuitive interface.
 
 # Tech Stacks
-![EVENT APP](public/assets/images/react.svg)
-
+React-Vite, Redux, Antd Frameworks
 
 # Login Form 
 ![EVENT APP](public/assets/images/login.png)
