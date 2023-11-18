@@ -1,4 +1,4 @@
-<img width="1216" alt="Screenshot 2023-11-18 at 22 48 20" src="https://github.com/syahrulkrn/event-app/assets/112604573/8167b958-160f-4b74-859a-705b6a2ae1e6"># Event App
+# Event App
 The Event App is a versatile application designed to allow users to view, register for events, and more. The app provides a user-friendly platform with functionalities that cater to various aspects of event engagement. Users can seamlessly explore, register for, and participate in events through a streamlined and intuitive interface.
 
 # Tech Stacks
