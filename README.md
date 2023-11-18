@@ -1,5 +1,5 @@
-_EVENT APP_
-￼
+**EVENTS APP**￼
+
 ![EVENT APP](public/assets/images/login.png)
 
 The Login Interface is a user interface specifically designed to facilitate the user authentication process within a system or platform. This interface provides elements that allow users to enter their credentials, such as a username and password, to gain legitimate access.
