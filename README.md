@@ -9,7 +9,10 @@ The Login Interface is a user interface specifically designed to facilitate the 
 A description of the Login Interface typically includes several key elements:
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> 87fca637ab64186541336c0fbccb26cb11d7f7c6
 - **Username:** An input box for entering the username or email address of the user.
 - **Password:** An input box for entering the user's secret and encrypted password.
 - **Login Button:** A button used to submit login information to the system.
