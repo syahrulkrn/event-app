@@ -21,7 +21,7 @@ const useGetEvent = () => {
       getEvent({
         page: pagination.current,
         limit: pagination.pageSize,
-        sortBy: sortedInfo.columnKey || 0,
+        sortBy: sortedInfo.order === "descend" ? 1 : 0,
         search: searchText,
       })
     );
@@ -36,7 +36,6 @@ const useGetEvent = () => {
     });
   };
 
-  console.log("event", event);
   return {
     event,
     isLoading,

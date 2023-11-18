@@ -1,5 +1,5 @@
 // File Home.jsx
-import { Table, Alert, Tag, Input } from "antd";
+import { Table, Alert, Tag, Input, Row, Col } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import useGetEvent from "./hooks/useGetEvent";
 
@@ -13,12 +13,11 @@ const EventTable = () => {
     searchText,
     setSearchText,
     pagination,
-    // setPagination,
   } = useGetEvent();
 
   const columns = [
     {
-      title: "Event name",
+      title: "Event title",
       dataIndex: "title",
       key: "title",
       sorter: true,
@@ -27,6 +26,16 @@ const EventTable = () => {
       title: "Place",
       dataIndex: "place",
       key: "place",
+    },
+    {
+      title: "Event Date",
+      dataIndex: "event_date",
+      key: "event_date",
+    },
+    {
+      title: "Participant",
+      dataIndex: "participantCount",
+      key: "participantCount",
     },
     {
       title: "Join Status",
@@ -48,13 +57,17 @@ const EventTable = () => {
   return (
     <div>
       <h1>Event List</h1>
-      <Input
-        placeholder="Search Event Name"
-        value={searchText}
-        onChange={(e) => setSearchText(e.target.value)}
-        style={{ marginBottom: 16 }}
-        prefix={<SearchOutlined />}
-      />
+      <Row>
+        <Col span={8}>
+          <Input
+            placeholder="Search Event Title"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+            style={{ marginBottom: 16 }}
+            prefix={<SearchOutlined />}
+          />
+        </Col>
+      </Row>
       <Table
         dataSource={event?.event}
         loading={isLoading}
