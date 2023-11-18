@@ -7,6 +7,6 @@ export const getUserToken = async () => {
       const parsedAuthData = JSON.parse(authData);
       const authorizationData = parsedAuthData?.user?.authorization?.token;
       resolve(authorizationData || null);
-    }, 0);
+    }, 200);
   });
 };
