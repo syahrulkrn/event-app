@@ -1,6 +1,6 @@
 # Event App
 
-#Login Form : 
+# Login Form : 
 ![EVENT APP](public/assets/images/login.png)
 
 The Login Interface is a user interface specifically designed to facilitate the user authentication process within a system or platform. This interface provides elements that allow users to enter their credentials, such as a username and password, to gain legitimate access.
@@ -11,7 +11,7 @@ A description of the Login Interface typically includes several key elements:
 - **Password:** An input box for entering the user's secret and encrypted password.
 - **Login Button:** A button used to submit login information to the system.
 
-**Registration Form:**
+# Registration Form:**
 
 ![EVENT APP](public/assets/images/register.png)
 
@@ -24,9 +24,9 @@ Key components of a Register Interface typically include:
 - **Password:** Input field for creating a secure and confidential password.
 - **Confirm Password:** A second input field to confirm the entered password.
 
-![EVENT APP](public/assets/images/eventlist.png)
 
 # Browse Event List
+![EVENT APP](public/assets/images/eventlist.png)
 
 The "Browse Event List" feature provides users with a comprehensive view of available events through a user-friendly table interface. The table is designed to display key information about each event in a structured format, enhancing the user's ability to quickly scan and identify events of interest.
 
