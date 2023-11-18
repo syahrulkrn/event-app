@@ -3,13 +3,14 @@ import useGetEvent from "./hooks/useGetDetail";
 import { useParams } from "react-router-dom";
 import moment from "moment";
 import QRCode from "react-qr-code";
+import LoadingSkeleton from "../../components/LoadingSkeleton";
 
 const EventDetail = () => {
   const { id } = useParams();
   const { eventDetail, isError, isLoading, message } = useGetEvent(id);
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <LoadingSkeleton />;
   }
 
   if (isError) {
