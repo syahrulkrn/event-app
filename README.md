@@ -1,12 +1,11 @@
-# Event App
+<img width="1216" alt="Screenshot 2023-11-18 at 22 48 20" src="https://github.com/syahrulkrn/event-app/assets/112604573/8167b958-160f-4b74-859a-705b6a2ae1e6"># Event App
 The Event App is a versatile application designed to allow users to view, register for events, and more. The app provides a user-friendly platform with functionalities that cater to various aspects of event engagement. Users can seamlessly explore, register for, and participate in events through a streamlined and intuitive interface.
 
 # Tech Stacks
 React-Vite, Redux, Antd Frameworks
 
-# User Interface 
+# Login 
 
-**Login Form:**
 ![EVENT APP](public/assets/images/login.png)
 
 The Login Interface is a user interface specifically designed to facilitate the user authentication process within a system or platform. This interface provides elements that allow users to enter their credentials, such as a username and password, to gain legitimate access.
@@ -17,7 +16,7 @@ A description of the Login Interface typically includes several key elements:
 - **Password:** An input box for entering the user's secret and encrypted password.
 - **Login Button:** A button used to submit login information to the system.
 
-**Registration Form:**
+# Registration
 
 ![EVENT APP](public/assets/images/register.png)
 
@@ -41,6 +40,7 @@ The "Browse Event List" feature provides users with a comprehensive view of avai
 The table consists of columns that present essential details about each event, such as the event name, date, location, and any other pertinent information. Additionally, there is a dedicated "Action" column that includes an option for viewing event details.
 
 ## Event Details Action
+![EVENT APP](public/assets/images/detail.png)
 
  Within the "Action" column, users can find a "View Details" button or link associated with each event entry. Clicking on this action initiates a seamless process, allowing users to delve deeper into specific event information. This detailed view may include event descriptions, schedules, participant lists, and any other relevant details that provide a comprehensive overview of the selected event.
 
