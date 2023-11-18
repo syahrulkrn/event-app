@@ -5,7 +5,6 @@ import { notification } from "antd";
 const initialState = {
   user: null,
   isError: false,
-  isSuccess: false,
   isLoading: false,
   message: "",
 };
@@ -102,7 +101,6 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.isError = false;
         state.message = action.payload.message;
-        state.user = action.payload;
       })
       .addCase(register.rejected, (state) => {
         state.isLoading = false;

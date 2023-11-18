@@ -1,16 +1,20 @@
 import { Form, Input, Button } from "antd";
 import useRegister from "./hooks/useRegister";
 
-// eslint-disable-next-line react/prop-types
-const RegisterForm = ({ onSuccess }) => {
+const RegisterForm = () => {
   const { handleRegister } = useRegister();
+  const [form] = Form.useForm(); // Gunakan Form.useForm() untuk mendapatkan instance form
+
+  const resetForm = () => {
+    form.resetFields(); // Reset semua nilai pada form
+  };
 
   const onFinish = (values) => {
-    handleRegister(values, onSuccess);
+    handleRegister(values, () => resetForm());
   };
 
   return (
-    <Form name="register" onFinish={onFinish}>
+    <Form form={form} name="register" onFinish={onFinish}>
       <Form.Item
         name="username"
         label="Username"

@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import { Button, Layout, Menu } from "antd";
 import Sider from "antd/es/layout/Sider";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { resetLoggedUser } from "../../redux/features/auth/authSlice";
 import { Header } from "antd/es/layout/layout";
 import {
   HistoryOutlined,
@@ -9,6 +10,7 @@ import {
   LogoutOutlined,
   UserOutlined,
 } from "@ant-design/icons";
+import { useDispatch } from "react-redux";
 
 const { Content } = Layout;
 
@@ -31,6 +33,13 @@ const siderStyle = {
 
 const Wrapper = () => {
   const location = useLocation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    dispatch(resetLoggedUser());
+    navigate("/auth");
+  };
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -75,6 +84,7 @@ const Wrapper = () => {
               type="primary"
               icon={<LogoutOutlined />}
               style={{ width: "100%" }}
+              onClick={handleLogout}
             >
               Logout
             </Button>

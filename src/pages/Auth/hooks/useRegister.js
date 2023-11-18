@@ -7,6 +7,22 @@ const useRegister = () => {
   const dispatch = useDispatch();
   const { message, isError } = useSelector((state) => state.auth);
 
+  const handleRegister = async (values, resetForm) => {
+    try {
+      const userData = {
+        name: values.username,
+        email: values.email,
+        password: values.password,
+      };
+      await dispatch(register(userData));
+      if (!isError) {
+        resetForm();
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
   useEffect(() => {
     if (!isError && message) {
       notification.success({
@@ -16,21 +32,6 @@ const useRegister = () => {
       });
     }
   }, [isError, message]);
-
-  const handleRegister = async (values, onSuccess) => {
-    try {
-      const userData = {
-        name: values.username,
-        email: values.email,
-        password: values.password,
-      };
-
-      await dispatch(register(userData));
-      onSuccess();
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
 
   return { handleRegister };
 };
