@@ -7,8 +7,8 @@ The Login Interface is a user interface specifically designed to facilitate the 
 A description of the Login Interface typically includes several key elements:
 
 Login Form:
-_ Username: An input box for entering the username or email address of the user.
-_ Password: An input box for entering the user's secret and encrypted password. \* Login Button: A button used to submit login information to the system.
+Username: An input box for entering the username or email address of the user.
+_Password: An input box for entering the user's secret and encrypted password. \* Login Button: A button used to submit login information to the system.
 
 # React + Vite
 
