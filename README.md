@@ -8,11 +8,6 @@ The Login Interface is a user interface specifically designed to facilitate the 
 
 A description of the Login Interface typically includes several key elements:
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> 87fca637ab64186541336c0fbccb26cb11d7f7c6
 - **Username:** An input box for entering the username or email address of the user.
 - **Password:** An input box for entering the user's secret and encrypted password.
 - **Login Button:** A button used to submit login information to the system.
@@ -20,6 +15,7 @@ A description of the Login Interface typically includes several key elements:
 **Registration Form:**
 
 ![EVENT APP](public/assets/images/register.png)
+
 The Register Interface is a user interface specifically designed to facilitate the user registration process within a system or platform. This interface provides elements that allow users to create a new account by entering necessary information such as personal details, email address, and password.
 
 Key components of a Register Interface typically include:
@@ -41,20 +37,7 @@ The table consists of columns that present essential details about each event, s
 
 ## Event Details Action
 
-# Within the "Action" column, users can find a "View Details" button or link associated with each event entry. Clicking on this action initiates a seamless process, allowing users to delve deeper into specific event information. This detailed view may include event descriptions, schedules, participant lists, and any other relevant details that provide a comprehensive overview of the selected event.
+ Within the "Action" column, users can find a "View Details" button or link associated with each event entry. Clicking on this action initiates a seamless process, allowing users to delve deeper into specific event information. This detailed view may include event descriptions, schedules, participant lists, and any other relevant details that provide a comprehensive overview of the selected event.
 
-**Login Form:**
 
-- **Username:** An input box for entering the username or email address of the user.
-- **Password:** An input box for entering the user's secret and encrypted password.
-- **Login Button:** A button used to submit login information to the system.
-  > > > > > > > 983f57ee6255c4da22781b57ba14eacc2c722387
 
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
