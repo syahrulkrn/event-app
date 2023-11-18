@@ -1,8 +1,7 @@
 import { Row, Col, Card } from "antd";
 import useGetEvent from "./hooks/useGetDetail";
 import { useParams } from "react-router-dom";
-
-// ... (imports)
+import moment from "moment";
 
 const EventDetail = () => {
   const { id } = useParams();
@@ -31,13 +30,17 @@ const EventDetail = () => {
           </Card>
         </Col>
         <Col span={12}>
-          <Card title="Event Information">
+          <Card title="Event Information" className="event-info-card">
             <p>
               <strong>Place:</strong> {eventDetail?.event?.place}
             </p>
             <p>
               <strong>Participant Count:</strong>{" "}
               {eventDetail?.event?.participantCount}
+            </p>
+            <p>
+              <strong>Event Date:</strong>{" "}
+              {moment(eventDetail?.event?.event_date).format("YYYY-MM-DD")}
             </p>
           </Card>
         </Col>
