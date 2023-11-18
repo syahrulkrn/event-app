@@ -2,6 +2,8 @@
 import { Table, Alert, Tag, Input, Row, Col } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import useGetEvent from "./hooks/useGetEvent";
+import { Link } from "react-router-dom";
+import moment from "moment";
 
 const EventTable = () => {
   const {
@@ -17,6 +19,14 @@ const EventTable = () => {
 
   const columns = [
     {
+      title: "Actions",
+      dataIndex: "id", // Assuming 'id' is the unique identifier of your event
+      key: "actions",
+      render: (eventId) => (
+        <Link to={`/event-detail/${eventId}`}>View Details</Link>
+      ),
+    },
+    {
       title: "Event title",
       dataIndex: "title",
       key: "title",
@@ -31,6 +41,9 @@ const EventTable = () => {
       title: "Event Date",
       dataIndex: "event_date",
       key: "event_date",
+      render: (eventDate) => (
+        <span>{moment(eventDate).format("YYYY-MM-DD")}</span>
+      ),
     },
     {
       title: "Participant",

@@ -1,4 +1,3 @@
-// File useGetEvent.jsx
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getEvent } from "../../../redux/features/event/eventSlice";
@@ -47,7 +46,7 @@ const useGetEvent = () => {
     setSearchText,
     pagination: {
       ...pagination,
-      total: isSuccess ? event.total : 0, // Use total from the response if available
+      total: isSuccess ? event.total : 0,
     },
     setPagination,
   };
